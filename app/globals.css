@@ -1,0 +1,176 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Dark luxury chocolate theme */
+  --background: oklch(0.08 0.01 30);
+  --foreground: oklch(0.95 0.01 60);
+  --card: oklch(0.12 0.015 35);
+  --card-foreground: oklch(0.95 0.01 60);
+  --popover: oklch(0.1 0.01 30);
+  --popover-foreground: oklch(0.95 0.01 60);
+  --primary: oklch(0.75 0.08 60);
+  --primary-foreground: oklch(0.1 0.01 30);
+  --secondary: oklch(0.18 0.02 35);
+  --secondary-foreground: oklch(0.85 0.02 60);
+  --muted: oklch(0.15 0.015 30);
+  --muted-foreground: oklch(0.65 0.02 50);
+  --accent: oklch(0.75 0.08 60);
+  --accent-foreground: oklch(0.1 0.01 30);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.95 0.01 60);
+  --border: oklch(0.25 0.02 40);
+  --input: oklch(0.18 0.015 35);
+  --ring: oklch(0.75 0.08 60);
+  --radius: 0.75rem;
+  
+  /* Custom luxury tokens */
+  --chocolate-dark: oklch(0.25 0.06 45);
+  --chocolate-rich: oklch(0.35 0.08 50);
+  --chocolate-milk: oklch(0.45 0.1 55);
+  --gold: oklch(0.75 0.12 80);
+  --gold-light: oklch(0.85 0.1 85);
+  --champagne: oklch(0.9 0.05 90);
+  
+  /* Flavor world colors */
+  --berry-frost: oklch(0.5 0.2 320);
+  --berry-frost-glow: oklch(0.65 0.25 330);
+  --mint-glacier: oklch(0.7 0.15 180);
+  --mint-glacier-glow: oklch(0.8 0.12 185);
+  --caramel-eclipse: oklch(0.55 0.15 70);
+  --caramel-glow: oklch(0.7 0.12 75);
+}
+
+@theme inline {
+  --font-sans: 'Geist', 'Geist Fallback';
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-display: 'Geist', 'Geist Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Custom colors */
+  --color-chocolate-dark: var(--chocolate-dark);
+  --color-chocolate-rich: var(--chocolate-rich);
+  --color-chocolate-milk: var(--chocolate-milk);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-champagne: var(--champagne);
+  --color-berry-frost: var(--berry-frost);
+  --color-berry-frost-glow: var(--berry-frost-glow);
+  --color-mint-glacier: var(--mint-glacier);
+  --color-mint-glacier-glow: var(--mint-glacier-glow);
+  --color-caramel-eclipse: var(--caramel-eclipse);
+  --color-caramel-glow: var(--caramel-glow);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--chocolate-rich);
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--gold);
+  }
+}
+
+/* Glassmorphism utilities */
+@layer utilities {
+  .glass {
+    background: rgba(18, 12, 8, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 215, 140, 0.1);
+  }
+  
+  .glass-light {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 215, 140, 0.08);
+  }
+  
+  .glow-gold {
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.3),
+                0 0 80px rgba(212, 175, 55, 0.1);
+  }
+  
+  .glow-chocolate {
+    box-shadow: 0 0 60px rgba(92, 64, 51, 0.4),
+                0 0 120px rgba(92, 64, 51, 0.2);
+  }
+  
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--champagne) 0%, var(--gold) 50%, var(--gold-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(212, 175, 55, 0.1),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+}
